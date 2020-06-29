@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:todo/constants.dart';
+import 'package:todo/screens/task_screen.dart';
 
 class Login extends StatefulWidget {
   static const String id = "login";
@@ -15,7 +17,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kPrimaryColor,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30),
         child: Column(
@@ -28,10 +30,11 @@ class _LoginState extends State<Login> {
             ),
             TextField(
               style: TextStyle(
-                color: Color(0xFF404d1c),
+                color: Colors.white,
               ),
               textAlign: TextAlign.center,
               keyboardType: TextInputType.emailAddress,
+              decoration: kDarkInputDecoration,
               onChanged: (value) {
                 email = value;
               },
@@ -40,8 +43,9 @@ class _LoginState extends State<Login> {
               height: 20,
             ),
             TextField(
-              style: TextStyle(color: Color(0xFF404d1c)),
+              style: TextStyle(color: Colors.white),
               textAlign: TextAlign.center,
+              decoration: kDarkInputDecoration,
               obscureText: true,
               onChanged: (value) {
                 password = value;
@@ -59,7 +63,7 @@ class _LoginState extends State<Login> {
                   final newUser = await _auth.signInWithEmailAndPassword(
                       email: email, password: password);
                   if (newUser != null) {
-                    print(newUser);
+                    Navigator.pushNamed(context, TaskScreen.id);
                   }
                 } catch (e) {
                   print(e);

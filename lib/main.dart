@@ -18,12 +18,13 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         routes: {
           Registration.id: (context) => Registration(),
-          Login.id: (context) => Login()
+          Login.id: (context) => Login(),
+          TaskScreen.id: (context) => TaskScreen()
         },
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             canvasColor: Colors.transparent, primaryColor: Colors.green),
-        home: TaskScreen(),
+        home: Login(),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:todo/screens/login_screen.dart';
 
 class Registration extends StatefulWidget {
   static const String id = "registration";
@@ -60,6 +61,7 @@ class _RegistrationState extends State<Registration> {
                       email: email, password: password);
                   if (newUser != null) {
                     print(newUser);
+                    Navigator.pushNamed(context, Login.id);
                   }
                 } catch (e) {
                   print(e);
